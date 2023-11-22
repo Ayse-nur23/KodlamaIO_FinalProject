@@ -19,5 +19,14 @@ namespace DataAccess.Concretes.EntityFramework
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
+
+
+        //custom maping: farklı isimlerle tanımlanmıs classes ilişkili tabloya bağlar
+        //public DbSet<Personel> Personels { get; set; } //IEntity bağlı class
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Personel>().ToTable("Employees", "dbo"); //Tabloları ilişkilendirir
+        //    modelBuilder.Entity<Personel>().Personel(p => p.Id).HasColumnName("EmployeeID"); //Kolonları ilişkilendirir
+        //}
     }
 }
