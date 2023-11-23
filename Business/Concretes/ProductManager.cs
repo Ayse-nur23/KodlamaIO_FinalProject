@@ -33,10 +33,16 @@ namespace Business.Concretes
             return new SuccessResult(Messages.ProductAdded);
         }
 
+        public IResult Delete(Product product)
+        {
+            _productDal.Delete(product);
+            return new SuccessResult(Messages.Deleted);
+        }
+
         public IDataResult<List<Product>> GetAll()
         {
             //Run Rules
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 2)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
