@@ -9,12 +9,19 @@ namespace Business.Constants
 {
     public static class Messages
     {
-        public static string ProductAdded = "Ürün eklendi.";
+        
         public static string ProductNameInvalıd = "Ürün ismi geçersiz";
-
         public static string MaintenanceTime = "Sistem bakımda";
-        public static string ProductsListed = "Ürünler Listelendi";
+       
+        public static string ProductCountOfCatgeoryError = "Bir kategoride maximum 10 ürün olmalı";
 
-        public static string Deleted = "Silindi";
+        public static string Updated = "Updated";
+        public static string Added = "Added";
+        public static string Deleted = "Deleted";
+        public static string Listed = "Listelendi";
+
+        public static string ProductNameAlreadyExists = "Ürün ismi mevcut";
+
+        public static string CategoryLimitExceded = "Kategori limiti aşıldı yeni ürün eklenemez.";
     }
 }

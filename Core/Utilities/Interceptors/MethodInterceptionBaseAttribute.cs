@@ -3,6 +3,7 @@
 
 namespace Core.Utilities.Interceptors
 {
+    //class veya methotlarda, birden fazla, inherited yapılan yerde  bu attribute kullanılabilir.
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
     public abstract class MethodInterceptionBaseAttribute : Attribute, IInterceptor
     {
