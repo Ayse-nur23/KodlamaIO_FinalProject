@@ -62,5 +62,15 @@ namespace WepAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("GroupByOfCategory")]
+        public IActionResult GroupByOfCategory()
+        {
+            var result = _productService.GroupByOfCategory();
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

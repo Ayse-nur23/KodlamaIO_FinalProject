@@ -3,9 +3,11 @@
 
 namespace Core.Utilities.Interceptors
 {
+    //aspect - interceptors, attribute
     public abstract class MethodInterception : MethodInterceptionBaseAttribute
     {
         //invocation business methot
+
         protected virtual void OnBefore(IInvocation invocation) { }
         protected virtual void OnAfter(IInvocation invocation) { }
         protected virtual void OnException(IInvocation invocation, System.Exception e) { }

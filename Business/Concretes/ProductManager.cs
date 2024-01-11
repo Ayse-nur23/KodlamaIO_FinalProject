@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -22,6 +23,7 @@ namespace Business.Concretes
             _categoryService = categoryService;
         }
 
+        [SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
@@ -83,7 +85,7 @@ namespace Business.Concretes
             }
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.Listed);
         }
-       
+
 
         public IDataResult<List<Product>> GetAllByCategory(int id)
         {
@@ -110,6 +112,14 @@ namespace Business.Concretes
             _productDal.Update(product);
             return new SuccessResult(Messages.Updated);
         }
+        public object GroupByOfCategory()
+        {
+            var result = _productDal.GetAll().OrderBy(p => p.CategoryId).GroupBy(p => p.CategoryId).
+                Select(p => new { categoryId = p.Key, countProduct = p.Count() });
+            return result;
+        }
+
+
         private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
         {
             var result = _productDal.GetAll(p => p.CategoryId == categoryId).Count;
